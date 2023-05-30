@@ -17,7 +17,7 @@
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Votre Email</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" aria-describedby="emailHelp">
+        <input type="mail" class="form-control" id="exampleInputEmail1" placeholder="mail" aria-describedby="emailHelp">
     </div>
     <button type="submit" class="btn btn-primary">Ajouter</button>
 </form>

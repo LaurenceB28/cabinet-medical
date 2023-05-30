@@ -37,7 +37,7 @@ $lastname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CH
             }
         }
     }
-    /* birthdate : Nettoyage et validation */
+                /* birthdate : Nettoyage et validation */
     $birthdate = filter_input(INPUT_POST, 'birthdate', FILTER_SANITIZE_NUMBER_INT);
     if (!empty($birthdate)) {
         $isOk = filter_var($birthdate, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/' . REGEX_DATE . '/']]);

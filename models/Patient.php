@@ -2,18 +2,20 @@
 require_once __DIR__ . '/../helpers/connect.php';
 
 class Patient{
+    private string $_id;
     private string $_firstname;
     private string $_lastname;
     private string $_birthdate;
-    private string $_email;
+    private string $_mail;
     private string $_phoneNumber;
 
-    public function __construct($lastname, $firstname, $birthdate, $email, $phoneNumber)
+    public function __construct($id,$lastname, $firstname, $birthdate, $mail, $phoneNumber)
     {
+        $this->_id = $id;
         $this-> _lastname = $lastname;
         $this-> _firstname = $firstname;
         $this-> _birthdate = $birthdate;
-        $this-> _email = $email;
+        $this-> _mail = $mail;
         $this-> _phoneNumber = $phoneNumber;
         // parent::__construct();
     }
@@ -43,11 +45,11 @@ class Patient{
 	}
 
     public function getEmail(): string {
-		return $this->_email;
+		return $this->_mail;
 	}
 
-    public function setEmail(string $email){
-		$this->_email = $email;
+    public function setEmail(string $mail){
+		$this->_mail = $mail;
 	}
 
     
