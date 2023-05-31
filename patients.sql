@@ -18,22 +18,6 @@ CREATE TABLE IF NOT EXISTS `patients`(
         PRIMARY KEY (`id`)
 )ENGINE=InnoDB;
 
-INSERT INTO `patients`(`lastName`,`firstName`,`birthDate`,`phone`, `mail`)
-VALUES ('Brennan','Guinevere','1994-02-05'),
-('Dean','Ori','1973-11-23'),
-('Sharpe','Nora','1983-03-10'),
-('Hampton','Wade','2000-03-05'),
-('Conner','Kibo','1979-11-04'),
-('Klein','Hilary','1972-12-16'),
-('Tyler','Lawrence','1996-05-13'),
-('Dudley','Tanya','1966-12-28'),
-('Terrell','Kim','1997-07-27'),
-('Mclaughlin','Laura','1977-02-16'),
-('Lewis','Linda','1983-07-18'),
-('Ware','Gemma','1969-10-17'),
-('Roth','Jolie','1981-02-24'),
-('Michael','Harriet','1961-11-27'),
-('Simpson','Paloma','1998-01-07');
 
 
 #------------------------------------------------------------

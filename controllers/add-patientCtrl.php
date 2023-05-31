@@ -1,15 +1,11 @@
 <?php
 $styleSheet = 'stylesheet.css';
-include(__DIR__ . '/../views/templates/header.php');
-    include(__DIR__ . '/../views/patient/add-patient.php');
-include(__DIR__ . '/../views/templates/footer.php');
+// require_once __DIR__ . '/../views/patient/add-patient.php';
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    /*Email : nettoyage et validation */
 
-
-                /*Email : nettoyage et validation */
-
-$email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+    $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
 
     if (empty($email)) {
         $error["email"] = "L'adresse mail est obligatoire!!";
@@ -19,9 +15,9 @@ $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
             $error["email"] = "L'adresse email n'est pas au bon format!!";
         }
     }
-                /*Lastname : nettoyage et validation*/
+    /*Lastname : nettoyage et validation*/
 
-$lastname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS));
+    $lastname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS));
     // On vérifie que ce n'est pas vide
     if (empty($lastname)) {
         $error["lastname"] = "Vous devez entrer un nom!!";
@@ -37,7 +33,7 @@ $lastname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CH
             }
         }
     }
-                /* birthdate : Nettoyage et validation */
+    /* birthdate : Nettoyage et validation */
     $birthdate = filter_input(INPUT_POST, 'birthdate', FILTER_SANITIZE_NUMBER_INT);
     if (!empty($birthdate)) {
         $isOk = filter_var($birthdate, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/' . REGEX_DATE . '/']]);
@@ -53,6 +49,15 @@ $lastname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CH
             }
         }
     }
+    if(!empty($error)){
+        $patient = new Patient;
+            $patient->setLastname($lastname);
+            $patient->setFirstname($firstname);
+            $patient->setBirthdate($birthdate);
+            $patient->setPhoneNumber($phoneNumber);
+            $patient->setEmail($email);
+    
+    }
 }
 
 // Rendu des vues concernées
@@ -65,3 +70,10 @@ if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)) {
 }
 
 include(__DIR__ . '/../views/templates/footer.php');
+// $addPatient = addPatient();
+
+// $email = isEmailExist();
+
+// include __DIR__ .'/../views/templates/header.php'; 
+//     include __DIR__ .'/../views/patient/add-patient.php';  
+// include __DIR__ .'/../views/templates/footer.php';

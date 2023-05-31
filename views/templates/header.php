@@ -35,16 +35,16 @@
                                 <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
                             <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Ajouter un patient</span></a>
+                                    <a href="/controllers/add-patientCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Ajouter un patient</span></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Liste des patients</span></a>
+                                    <a href="/controllers/patient-listCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Liste des patients</span></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Profil du patient</span></a>
+                                    <a href="/controllers/patient-profilCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Profil du patient</span></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Ajout de rendez-vous</span></a>
+                                    <a href="/controllers/appointmentCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Ajout de rendez-vous</span></a>
                                 </li>
                             </ul>
                         </li>
