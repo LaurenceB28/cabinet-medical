@@ -5,15 +5,15 @@
     <h2>Ajouter un patient</h2>
     <div class="mb-3">
         <label for="lastName" class="form-label">Votre Nom</label>
-        <input type="text" class="form-control" placeholder="Nom" aria-label="Firstname" maxlength="25" required>
+        <input type="text" name="lastname" class="form-control" placeholder="Nom" aria-label="Firstname" maxlength="25" required>
     </div>
     <div class="mb-3">
         <label for="firstName" class="form-label">Votre Prénom</label>
-        <input type="text" class="form-control" placeholder="Prénom" aria-label="Lastname" maxlength="25" required>
+        <input type="text" name="firstname" class="form-control" placeholder="Prénom" aria-label="Lastname" maxlength="25" required>
     </div>
     <div class="mb-3">
         <input type="date" name="birthdate" id="birthdate" value="<?= htmlentities($birthdate ?? '') ?>" title="La date de naissance n' est pas au format attendu" placeholder="Entrez votre date de naissance" class="form-control <?= isset($error['birthdate']) ? 'errorField' : '' ?>" autocomplete="bday" aria-describedby="birthdateHelp" min="1920-01-01" max="<?= date('Y-m-d') ?>" required>
-        <small id="birthdateHelp" class="form-text error"><?= $error['birthdate'] ?? '' ?></small>
+        <small id="birthdateHelp" name="birthdate" class="form-text error"><?= $error['birthdate'] ?? '' ?></small>
     </div>
     <div class="mb-3">
         <label for="phone" class="form-label">Votre téléphone</label>
@@ -21,7 +21,7 @@
     </div>
     <div class="mb-3">
         <label for="exampleInputMail1" class="form-label">Votre Email</label>
-        <input type="mail" name="exampleInputEmail1" id="exampleInputEmail1" placeholder="mail" aria-describedby="mailHelp" maxlength="25" value="<?= htmlentities($email ?? '') ?>" title="L'email existe déja" class="form-control<?= isset($error['mail']) ? 'errorField' : '' ?>" required>
+        <input type="mail" name="mail" id="exampleInputEmail1" placeholder="mail" aria-describedby="mailHelp" maxlength="25" value="<?= htmlentities($email ?? '') ?>" title="L'email existe déja" class="form-control<?= isset($error['mail']) ? 'errorField' : '' ?>" required>
         <small id="mailHelp" class="form-text error"><?= $error['mail'] ?? '' ?></small>
     </div>
     <button type="submit" class="btn btn-primary">Ajouter</button>

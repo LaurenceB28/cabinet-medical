@@ -5,7 +5,7 @@ $styleSheet = 'stylesheet.css';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     /*Email : nettoyage et validation */
 
-    $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+    $email = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
 
     if (empty($email)) {
         $error["email"] = "L'adresse mail est obligatoire!!";
@@ -58,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $patient->setEmail($email);
     
     }
+
 }
 
 // Rendu des vues concernées
@@ -70,10 +71,6 @@ if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)) {
 }
 
 include(__DIR__ . '/../views/templates/footer.php');
-// $addPatient = addPatient();
-
-// $email = isEmailExist();
-
 // include __DIR__ .'/../views/templates/header.php'; 
 //     include __DIR__ .'/../views/patient/add-patient.php';  
 // include __DIR__ .'/../views/templates/footer.php';

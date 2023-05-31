@@ -82,18 +82,18 @@ class Patient
   }
 }
 
-
 public function add(){
   $db = connect();
   $sth = $db->query('INSERT INTO `patients`(firstname, lastname, birthdate, phone, mail) VALUES ()');
   $isExist = $patient;
-  var_dump($isExist); 
+  // var_dump($isExist); 
   if(!$isExist){
       echo 'nouveau patient enregistré';
     }else{
       'une erreur est survenue';
     }
 }
+
 
 
 
