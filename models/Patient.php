@@ -8,24 +8,25 @@ class Patient
   private string $_lastname;
   private string $_birthdate;
   private string $_mail;
-  private string $_phoneNumber;
+  private string $_phone;
 
-  public function __construct($id, $lastname, $firstname, $birthdate, $mail, $phoneNumber)
+  // public function __construct($id, $firstname, $lastname, $birthdate, $phone, $mail)
+  // {
+  //   $this->_id = $id;
+  //   $this->_firstname = $firstname;
+  //   $this->_lastname = $lastname;
+  //   $this->_birthdate = $birthdate;
+  //   $this->_phone = $phone;
+  //   $this->_mail = $mail;
+  // }
+
+  public function getId()
   {
-    $this->_id = $id;
-    $this->_lastname = $lastname;
-    $this->_firstname = $firstname;
-    $this->_birthdate = $birthdate;
-    $this->_mail = $mail;
-    $this->_phoneNumber = $phoneNumber;
-    // parent::__construct();
-  }
-
-  public function getId(){
     return $this->_id;
   }
 
-  public function setId(){
+  public function setId($id)
+  {
     $this->_id = $id;
   }
 
@@ -59,12 +60,12 @@ class Patient
     $this->_birthdate = $birthdate;
   }
 
-  public function getEmail(): string
+  public function getMail(): string
   {
     return $this->_mail;
   }
 
-  public function setEmail(string $mail)
+  public function setMail(string $mail)
   {
     $this->_mail = $mail;
   }
@@ -73,26 +74,40 @@ class Patient
 
   public function getPhone(): string
   {
-    return $this->_phoneNumber;
+    return $this->_phone;
   }
 
-  public function setPhoneNumber($phoneNumber)
+  public function setPhone($phone)
   {
-    $this->_phoneNumber = $phoneNumber;
+    $this->_phone = $phone;
   }
-}
 
-public function add(){
-  $db = connect();
-  $sth = $db->query('INSERT INTO `patients`(firstname, lastname, birthdate, phone, mail) VALUES ()');
-  $isExist = $patient;
-  // var_dump($isExist); 
-  if(!$isExist){
-      echo 'nouveau patient enregistré';
-    }else{
-      'une erreur est survenue';
-    }
-}
+  public function add()
+  {
+    $db = connect();
+    $sql = 'INSERT INTO `patients` (`lastname`,`firstname`,`birthdate`, `phone`, `mail`) 
+    VALUES (:lastname,:firstname,:birthdate,:phone,:mail)';
+    $sth = $db->prepare($sql);
+    $sth->bindValue(':firstname', $this->_lastname);
+    $sth->bindValue(':lastname', $this->_firstname);
+    $sth->bindValue(':birthdate', $this->_birthdate);
+    $sth->bindValue(':phone', $this->_phone);
+    $sth->bindValue(':mail', $this->_mail);
+    return $sth->execute();
+  }
+
+  public function isExist()
+  {
+    $db = connect();
+    $sql = "SELECT `mail` FROM `patients` WHERE `mail`= :mail";
+    $sth = $db->prepare($sql);
+    $sth->bindValue(':mail', $this->_mail);
+    $sth->execute();
+    return $sth->fetchColumn();
+  }
+} 
+
+
 
 
 
@@ -140,8 +155,3 @@ public function add(){
 //   } else {
 //       echo 'erreur';
 //   }
-
-
-
-
-
