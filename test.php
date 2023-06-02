@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,6 +100,22 @@
             Content area...
         </div>
     </div>
+    <?php $error = null; ?>
+    <div><?php if($block==1): ?>
+        <div class="alert alert-danger"><?= $message ?? ''?></div>
+        <?php else: ?>
+            <div class="alert alert-success"><?= $message ?? ''?>
+        </div>
+            <?php endif ?>
+
+            // if ($block == 1){
+    // $class = 'alert-danger';
+    // }else{
+    // $class = 'alert-success';
+    // }
+    // $class = (isset($block) && $block == 1) ? 'alert alert-danger' : 'alert alert-success';
+    // ?>
+    // <div class="<?= $class ?>"><?= $message ?? '' ?></div>
 </div>
 
 </body>

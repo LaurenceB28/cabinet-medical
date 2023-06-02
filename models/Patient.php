@@ -99,11 +99,18 @@ class Patient
   public function isExist()
   {
     $db = connect();
-    $sql = "SELECT `mail` FROM `patients` WHERE `mail`= :mail";
+    $sql = 'SELECT `mail` FROM `patients` WHERE `mail`= :mail';
     $sth = $db->prepare($sql);
     $sth->bindValue(':mail', $this->_mail);
     $sth->execute();
-    return $sth->fetchColumn();
+    return $sth->fetch();
+  }
+
+  public static function patientList()
+  {
+    $db = connect();
+    $sth = $db->query('SELECT `lastname`,`firstname`,`birthdate`, `phone`, `mail` FROM `patients`');
+    return $sth->fetchAll(PDO::FETCH_OBJ);
   }
 } 
 

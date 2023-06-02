@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     /*Firstname : nettoyage et validation*/
-    $firstname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS));
+    $firstname = trim(filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_SPECIAL_CHARS));
     // On vérifie que ce n'est pas vide
     if (empty($firstname)) {
         $error["firstname"] = "Vous devez entrer un nom!!";
@@ -92,17 +92,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $patient->setMail($mail);
         $isExist = $patient->isExist();
         if ($isExist) {
-            $message = 'patient déja enregistré';
+            $message = 'Ce patient est déja enregistré';
+            $block = 1;
         } else {
+            $block= 0;
             $isAdded = $patient->add();
             if ($isAdded == true) {
-                $message = 'patient enregistré';
-                // ou header('location: /controllers/add-patientCtrl.php');
+                $message = 'Le patient est enregistré';
             }
         }
     }
 }
 
+// header('location: /controllers/add-patientCtrl.php');
 // Rendu des vues concernées
 include(__DIR__ . '/../views/templates/header.php');
 

@@ -1,5 +1,6 @@
-<?= $message ?? ''?>
-
+<?php
+$error = null;
+?>
 <form method="post" novalidate>
     <h2>Ajouter un patient</h2>
     <div class="mb-3">
@@ -11,11 +12,11 @@
         <input type="text" name="firstname" class="form-control" placeholder="Prénom" aria-label="Lastname" maxlength="25" required>
     </div>
     <div class="mb-3">
-        <input type="date" name="birthdate" id="birthdate" value="<?= htmlentities($birthdate ?? '') ?>" title="La date de naissance n' est pas au format attendu" placeholder="Entrez votre date de naissance" class="form-control <?= isset($error['birthdate']) ? 'errorField' : '' ?>" autocomplete="bday" aria-describedby="birthdateHelp" min="01-01-1920" max="<?= date('d-m-Y') ?>" required>
+        <input type="date" name="birthdate" id="birthdate" value="<?= htmlentities($birthdate ?? '') ?>" title="La date de naissance n' est pas au format attendu" placeholder="Entrez votre date de naissance" class="form-control <?= isset($error['birthdate']) ? 'errorField' : '' ?>" autocomplete="bday" aria-describedby="birthdateHelp" min="1920-01-01" max="<?= date('Y-m-d') ?>" required>
         <small id="birthdateHelp" name="birthdate" class="form-text error"><?= $error['birthdate'] ?? '' ?></small>
     </div>
     <div class="mb-3">
-        <label for="phone" class="form-label">Votre téléphone</label>
+        <label for="phone" class="form-label">Votre téléphone</label><br>
         <input type="text" id="phone" name="phone" placeholder="phone" aria-label="phone" max="25">
     </div>
     <div class="mb-3">
@@ -24,4 +25,25 @@
         <small id="mailHelp" class="form-text error"><?= $error['mail'] ?? '' ?></small>
     </div>
     <button type="submit" class="btn btn-primary">Ajouter</button>
-</form>
+    <?php $error = null; ?>
+
+    <?php
+    if(isset($block)){
+    if ($block == 1) : ?>
+        <div class="alert alert-danger"><?= $message ?? '' ?></div>
+    <?php else : ?>
+        <div class="alert alert-success"><?= $message ?? '' ?>
+        </div>
+        
+    <?php endif ?>
+    <?php } ?>
+    </form>
+
+
+
+
+
+
+
+
+
