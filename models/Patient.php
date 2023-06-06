@@ -146,6 +146,26 @@ class Patient
     $sth->execute();
     return $sth->fetch();
   }
+
+  /**
+   * Summary of updatePatient
+   * @param mixed $id
+   * @return mixed
+   */
+  public function updatePatient($id)
+  {
+    $db = connect();
+    $sql = 'UPDATE `patients` SET `lastname`= :lastname,`firstname`= :firstname,`birthdate`= :birthdate, `phone` = :phone, `mail` = :mail WHERE `id`= :id;';
+    $sth = $db->prepare($sql);
+    $sth->bindValue(':id', $id);
+    $sth->bindValue(':laststname', $this->_lastname);
+    $sth->bindValue(':firstname', $this->_firstname);
+    $sth->bindValue(':birthdate', $this->_birthdate);
+    $sth->bindValue(':phone', $this->_phone);
+    $sth->bindValue(':mail', $this->_mail);
+    $sth->execute();
+    return $sth->fetch();
+  }
 }
 
 

@@ -79,7 +79,7 @@ try {
             } else {
                 $birthdateObj = new DateTime($birthdate);
                 // Calcul de l'age de l'utilisateur (année courante - année de naissance)
-                $age = date('l j F Y',strtotime($birthdate)) - $birthdateObj->format('l j F Y');
+                $age = date('d-m-Y',strtotime($birthdate)) - $birthdateObj->format('d-m-Y');
     
                 if ($age > 120 || $age < 0) {
                     $error["birthdate"] = "Votre age n'est pas conforme!";
