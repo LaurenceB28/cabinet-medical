@@ -1,12 +1,23 @@
-.form{
+.form {
 	justify-content: center;
 	margin: auto;
 }
 
-h2{
+h2 {
 	color: black;
 	text-align: center;
 }
-h3{
+h3 {
 	color: black;
+}
+
+#add-btn{
+	text-decoration: none;
+	color: #ffffff;
+}
+
+#addPatient{
+	position: fixed;
+    top: 30%;
+	right: 0px;
 }

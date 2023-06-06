@@ -20,11 +20,20 @@ class Patient
   //   $this->_mail = $mail;
   // }
 
+  /**
+   * Summary of getId
+   * @return string
+   */
   public function getId()
   {
     return $this->_id;
   }
 
+  /**
+   * Summary of setId
+   * @param mixed $id
+   * @return void
+   */
   public function setId($id)
   {
     $this->_id = $id;
@@ -82,11 +91,15 @@ class Patient
     $this->_phone = $phone;
   }
 
+  /**
+   * Summary of add
+   * @return bool
+   */
   public function add()
   {
     $db = connect();
     $sql = 'INSERT INTO `patients` (`lastname`,`firstname`,`birthdate`, `phone`, `mail`) 
-    VALUES (:lastname,:firstname,:birthdate,:phone,:mail)';
+    VALUES (:lastname,:firstname,:birthdate,:phone,:mail);';
     $sth = $db->prepare($sql);
     $sth->bindValue(':firstname', $this->_lastname);
     $sth->bindValue(':lastname', $this->_firstname);
@@ -96,23 +109,48 @@ class Patient
     return $sth->execute();
   }
 
+  /**
+   * Summary of isExist
+   * @return mixed
+   */
   public function isExist()
   {
     $db = connect();
-    $sql = 'SELECT `mail` FROM `patients` WHERE `mail`= :mail';
+    $sql = 'SELECT `mail` FROM `patients` WHERE `mail`= :mail;'; //:mail = marqueur nominatif
     $sth = $db->prepare($sql);
     $sth->bindValue(':mail', $this->_mail);
     $sth->execute();
     return $sth->fetch();
   }
 
+  /**
+   * Summary of patientList
+   * @return array
+   */
   public static function patientList()
   {
     $db = connect();
-    $sth = $db->query('SELECT `lastname`,`firstname`,`birthdate`, `phone`, `mail` FROM `patients`');
+    $sth = $db->query('SELECT `id`,`lastname`,`firstname`,`birthdate`, `phone`, `mail` FROM `patients`;');
     return $sth->fetchAll(PDO::FETCH_OBJ);
   }
-} 
+  /**
+   * Summary of get
+   * @return mixed
+   */
+  public static function get(int $id)
+  {
+    $db = connect();
+    $sql = 'SELECT `lastname`,`firstname`,`birthdate`, `phone`, `mail` FROM `patients` WHERE `id`= :id;';
+    $sth = $db->prepare($sql);
+    $sth->bindValue(':id', $id);
+    $sth->execute();
+    return $sth->fetch();
+  }
+}
+
+
+
+
 
 
 

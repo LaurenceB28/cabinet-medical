@@ -1,20 +1,15 @@
 <h3 class="text-center">Profil du patient</h3>
-
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Type</th>
-            <th scope="col">Column heading</th>
-            <th scope="col">Column heading</th>
-            <th scope="col">Column heading</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="table-active">
-            <th scope="row">Active</th>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
-        </tr>
-    </tbody>
-</table>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h4>Fiche Patient</h4>
+        </div>
+        <ul>
+            <li class="list-group-item">Nom:<span class="bold"></span><?= $patient->lastname ?></li>
+            <li class="list-group-item">Prénom:<span class="bold"></span><?= $patient->firstname ?></li>
+            <li class="list-group-item">Date de naissance:<span class="bold"></span><?= $patient->birthdate ?></li>
+            <li class="list-group-item">Tel:<span class="bold"></span><?= $patient->phone ?></li>
+            <li class="list-group-item">Email:<span class="bold"></span><?= $patient->mail ?></li>
+        </ul>
+    </div>
+</div>
