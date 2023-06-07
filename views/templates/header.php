@@ -16,7 +16,6 @@
     ?>
     <title>Cabinet-Médical</title>
 </head>
-
 <body>
     <div class="container-fluid">
         <div class="row flex-nowrap">
@@ -27,28 +26,25 @@
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link align-middle px-0">
+                            <a href="/views/home.php" class="nav-link align-middle px-0">
                                 <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Accueil</span>
                             </a>
                         </li>
                         <li>
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-                            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="/controllers/add-patientCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Ajouter un patient</span></a>
-                                </li>
-                                <li>
-                                    <a href="/controllers/patient-listCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Liste des patients</span></a>
-                                </li>
-                                <li>
-                                    <a href="/controllers/patient-profilCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Profil du patient</span></a>
-                                </li>
-                                <li>
-                                    <a href="/controllers/appointmentCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Ajout de rendez-vous</span></a>
-                                </li>
-                            </ul>
+                                <a href="/controllers/add-patientCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Ajouter un patient</span></a>
                         </li>
+                        <li>
+                            <a href="/controllers/patient-listCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Liste des patients</span></a>
+                        </li>
+                        <li>
+                            <a href="/controllers/appointmentCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Nouveau rendez-vous</span></a>
+                        </li>
+                        <li>
+                            <a href="/controllers/appointment-ListCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Liste des rendez-vous</span></a>
+                        </li>
+                    </ul>
+                    </li>
                     </ul>
                     <hr>
                 </div>

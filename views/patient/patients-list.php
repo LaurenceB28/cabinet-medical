@@ -1,7 +1,11 @@
-<div id="results">
-    <h3 class="text-center">Liste des patients</h3>
 
-
+    <div class="container-fluid" id="logo">
+        <a class="logo" href="">
+            <img src="/public/assets/img/logo.png"> 
+        </a>
+    </div>
+    <h3>Liste des patients</h3>
+    <div id="results">
     <table class="table table-hover">
         <div>
             <button type="button" id="addPatient" class="sticky btn btn-lg btn-info">
