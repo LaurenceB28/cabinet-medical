@@ -39,7 +39,7 @@
                             <a href="/controllers/patient-listCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Liste des patients</span></a>
                         </li>
                         <li>
-                            <a href="/controllers/appointmentCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Nouveau rendez-vous</span></a>
+                            <a href="/controllers/add-appointmentCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Nouveau rendez-vous</span></a>
                         </li>
                         <li>
                             <a href="/controllers/appointment-ListCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Liste des rendez-vous</span></a>

@@ -10,15 +10,6 @@ class Patient
   private string $_mail;
   private string $_phone;
 
-  // public function __construct($id, $firstname, $lastname, $birthdate, $phone, $mail)
-  // {
-  //   $this->_id = $id;
-  //   $this->_firstname = $firstname;
-  //   $this->_lastname = $lastname;
-  //   $this->_birthdate = $birthdate;
-  //   $this->_phone = $phone;
-  //   $this->_mail = $mail;
-  // }
 
   /**
    * Summary of getId

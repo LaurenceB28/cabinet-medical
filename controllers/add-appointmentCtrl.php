@@ -8,6 +8,7 @@ $patientList = Patient::patientList();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $idPatients = intval(filter_input(INPUT_POST, 'idPatients', FILTER_SANITIZE_NUMBER_INT));
 
+
     /*hour : nettoyage et validation*/
     $hour = trim(filter_input(INPUT_POST, 'hour', FILTER_SANITIZE_SPECIAL_CHARS));
     if (empty($hour)) {
@@ -30,14 +31,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    $dateHour = $date.' '.$hour; 
+    $dateHour = $date . ' ' . $hour;
     // '2023-06-16 14:00:00'
+    $appointment = new Appointment();
+    $appointment->setIdPatients($idPatients);
+    $appointment->setDateHour($dateHour);
+    $appointment->add();
 }
 
-$appointment = new Appointment();
-$appointment -> setIdPatients($idPatients);
-$appointment -> setDateHour($dateHour);
-$appointment->add();
 
 
 

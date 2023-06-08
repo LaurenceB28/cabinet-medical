@@ -2,7 +2,6 @@
 require_once __DIR__ . '/../models/Patient.php';
 require_once __DIR__ . '/../config/config.php';
 $styleSheet = 'stylesheet.css';
-// $add = add()
 try {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
