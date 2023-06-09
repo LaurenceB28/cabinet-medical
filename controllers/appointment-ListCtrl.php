@@ -4,6 +4,7 @@ require_once __DIR__ . '/../models/Patient.php';
 $styleSheet = 'stylesheet.css';
 
 $patientList = Patient::patientList();
+$appointmentsList = Appointment::appointmentsList();
 // $appointmentsList = Appointment::appointmentsList();
 $id = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

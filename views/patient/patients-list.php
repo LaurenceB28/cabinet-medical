@@ -21,7 +21,7 @@
                 <th scope="col">Telephone</th>
                 <th scope="col">Email</th>
                 <th scope="col">Profil</th>
-                <th scope="col">Suppimer</th>
+                <th scope="col">Supprimer</th>
                 <th>
             </tr>
         </thead>
