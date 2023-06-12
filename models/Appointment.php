@@ -1,28 +1,35 @@
 <?php
 require_once __DIR__ . '/../helpers/connect.php';
 
-class Appointment{
-    private int $_id;
-    private string $_dateHour;
-    private int $_idPatients;
+class Appointment
+{
+  private int $_id;
+  private string $_dateHour;
+  private int $_idPatients;
 
-    public function getId(): int {
-		return $this->_id;
-	}
-    public function setId(int $id){
-		$this->_id = $id;
-}
-    public function getDateHour(){
+  public function getId(): int
+  {
+    return $this->_id;
+  }
+  public function setId(int $id)
+  {
+    $this->_id = $id;
+  }
+  public function getDateHour()
+  {
     return $this->_dateHour;
   }
-    public function setDateHour($dateHour){
-    $this-> _dateHour = $dateHour;
+  public function setDateHour($dateHour)
+  {
+    $this->_dateHour = $dateHour;
   }
-  public function getIdPatients(){
+  public function getIdPatients()
+  {
     return $this->_idPatients;
   }
-    public function setIdPatients(int $idPatients){
-    $this-> _idPatients = $idPatients;
+  public function setIdPatients(int $idPatients)
+  {
+    $this->_idPatients = $idPatients;
   }
   public function add()
   {
@@ -34,44 +41,33 @@ class Appointment{
     $sth->bindValue(':idPatients', $this->_idPatients);
     return $sth->execute();
   }
-  /**
-   * Summary of appointmentsList
-   * @return mixed
-   */
-//   public function appointmentsList()
-//   {
-//     $db = connect();
-//     $sql = 'SELECT `appointments`.`dateHour`, `appointments`.`idPatients`AS`appointment`, `patients`.`id`AS`patient`
-//     FROM `appointments` 
-//     INNER JOIN `patients` 
-//     ON `appointments`.`idPatients`, `appointments`.`dateHour` = `patients`.`id`;';
-//     $sth = $db->prepare($sql);
-//     return $sth->fetchAll(PDO::FETCH_OBJ);
-//   }
-// }
 
-public static function appointmentsList()
-    {
-        $db = connect();
-        $sql = 'SELECT patients.id,
-        patients.firstname,
-        patients.lastname,
-        patients.phone,
-        patients.mail, 
-        appointments.dateHour
-
-        FROM appointments LEFT JOIN patients ON appointments.idPatients = patients.id;';
-        $sth = $db->query($sql);
-        $sth->execute();
-        return $sth->fetchall();
-
-    }
+  public static function appointmentsList(): array
+  {
+    $db = connect();
+    $sql = 'SELECT
+        `appointments`.`id` AS `idAppointments`,
+        `patients`.`firstname`,
+        `patients`.`lastname`, 
+        `appointments`.`dateHour`
+        FROM `appointments` INNER JOIN `patients` ON `appointments`.`idPatients` = `patients`.`id`;';
+    $sth = $db->query($sql);
+    return $sth->fetchall();
   }
 
-
-
-
-// SELECT `languages`.`name` AS `language`, `frameworks`. `name` AS `framework`
-// FROM `languages`
-// INNER JOIN `frameworks` ON `languages`.`id` = `frameworks`.`languagesId`;
-
+  public static function appointmentInfos($id)
+  {
+    $db = connect();
+    $sql = 'SELECT
+    `appointments`.`id` AS `idAppointments`,
+    `patients`.`firstname`,
+    `patients`.`lastname`, 
+    `appointments`.`dateHour`
+    FROM `appointments`INNER JOIN `patients` ON `appointments`.`idPatients` = `patients`.`id` 
+    WHERE appointments.id = :idAppointments ;';
+    $sth = $db->prepare($sql);
+    $sth->bindValue(':idAppointments', $id );
+    $sth->execute();
+    return $sth->fetch();
+  }
+}
