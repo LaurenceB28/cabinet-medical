@@ -12,7 +12,7 @@
         <ul>
             <li class="list-group-item"><span class="bold">Nom : </span><?= $patient->lastname ?></li>            
             <li class="list-group-item"><span class="bold">Prénom : </span><?= $patient->firstname ?></li>
-            <li class="list-group-item"><span class="bold">Date de naissance : </span><?= $patient->birthdate ?></li>
+            <li class="list-group-item"><span class="bold">Date de naissance : </span><?= date('d/m/Y', strtotime($patient->birthdate)) ?></li>
             <li class="list-group-item"><span class="bold">Tel : </span><?= $patient->phone ?></li>
             <li class="list-group-item"><span class="bold">Email : </span><?= $patient->mail ?></li>
         </ul>

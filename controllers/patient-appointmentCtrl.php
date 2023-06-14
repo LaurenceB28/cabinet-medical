@@ -5,7 +5,7 @@ $styleSheet = 'stylesheet.css';
 
 try {
     $id = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
-    $appointmentInfos = Appointment::appointmentInfos($id);
+    $appointmentInfos = Appointment::appointmentInfo($id);
     if ($appointmentInfos == false) {
         throw new Exception('le patient n\'a pas été trouvé');
     }
@@ -14,7 +14,6 @@ try {
     include __DIR__ . '/../views/templates/header.php';
     include __DIR__ . '/../views/templates/error.php';
     include __DIR__ . '/../views/templates/footer.php';
-
 }
 
 

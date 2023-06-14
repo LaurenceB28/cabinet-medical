@@ -14,7 +14,7 @@ setlocale(LC_TIME, 'fra.UTF-8');
         <input type="text" name="firstname" class="form-control" placeholder="Prénom" aria-label="Lastname" maxlength="25" required>
     </div>
     <div class="mb-3">
-        <input type="date" name="birthdate" id="birthdate" value="<?= htmlentities($birthdate ?? '') ?>" title="La date de naissance n' est pas au format attendu" placeholder="Entrez votre date de naissance" class="form-control <?= isset($error['birthdate']) ? 'errorField' : '' ?>" autocomplete="bday" aria-describedby="birthdateHelp" min="01-01-1920" max="<?= date('d-m-Y',strtotime($birthdate)) ?>" required>
+        <input type="date" name="birthdate" id="birthdate" value="<?= htmlentities($birthdate ?? '') ?>" title="La date de naissance n' est pas au format attendu" placeholder="Entrez votre date de naissance" class="form-control <?= isset($error['birthdate']) ? 'errorField' : '' ?>" autocomplete="bday" aria-describedby="birthdateHelp" min="01-01-1920" max="<?= date('d/m/Y', strtotime($birthdate)) ?>" required>
         <small id="birthdateHelp" name="birthdate" class="form-text error"><?= $error['birthdate'] ?? '' ?></small>
     </div>
     <div class="mb-3">

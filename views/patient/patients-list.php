@@ -32,7 +32,7 @@
                 <tr class="table-light">
                     <th scope="row"><?= $patient->firstname ?></th>
                     <td><?= $patient->lastname ?></td></a>
-                    <td><?= $patient->birthdate ?></td>
+                    <td><?= date('d/m/Y', strtotime($patient->birthdate)) ?></td>
                     <td><a href="tel:"><?= $patient->phone ?></a></td>
                     <td><a href="mailto="><?= $patient->mail ?></a></td>
                     <td><a href="/controllers/patient-profilCtrl.php?id=<?= $patient->id ?>"><span class="btn btn-outline-info border border-info">Profil</span></a></td>

@@ -12,8 +12,7 @@
         <ul>
             <li class="list-group-item"><span class="bold">Nom : </span><?= $appointmentInfos->lastname ?></li>            
             <li class="list-group-item"><span class="bold">Prénom : </span><?= $appointmentInfos->firstname ?></li>
-            <li class="list-group-item"><span class="bold">Date du RDV : </span><?= $appointmentInfos->dateHour ?></li>            
-        </ul>
+            <li class="list-group-item"><span class="bold">Date du RDV : </span>Le <?= date('d/m/Y à H:i', strtotime($appointmentInfos->dateHour)) ?></li>
         <div class="card-body">
             <a href="/controllers/modify-appointmentCtrl.php?id=<?= $id ?>" class="btn btn-info">Modifier</a>
         </div>
