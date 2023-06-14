@@ -104,4 +104,33 @@ WHERE `appointments`.`id` = :id;';
     $sth->bindValue(':idPatients', $this->_idPatients, PDO::PARAM_INT);
     return $sth->execute();
   }
+
+  /**
+   * Summary of displayAppointments
+   * @param mixed $id
+   * @return array
+   */
+  public static function displayAppointments($idPatients)
+  {
+    $db = connect();
+    $sql = 'SELECT `appointments`.`id` AS `idAppointments`,
+      `appointments`.`dateHour`,
+    `appointments`.`idPatients` 
+    FROM `appointments` 
+    WHERE  `idPatients` = :idPatients;';
+    $sth = $db->prepare($sql);
+    $sth->bindValue(':idPatients', $idPatients, PDO::PARAM_INT);
+    $sth->execute();
+    return $sth->fetchAll();
+  }
+
+  public function deleteAppointment()
+  {
+    $db = connect();
+    $sql = 'DELETE FROM `appointments` WHERE `id` = `:id`;';
+    $sth = $db->prepare($sql);
+    $sth->bindValue(':id', $this->_id, PDO::PARAM_INT);
+    return $sth->execute();
+  }
 }
+
