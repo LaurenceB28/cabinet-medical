@@ -32,7 +32,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle"></a>
                                 <a href="/controllers/add-patientCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Ajouter un patient</span></a>
                         </li>
                         <li>

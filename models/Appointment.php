@@ -102,8 +102,6 @@ WHERE `appointments`.`id` = :id;';
     $sth->bindValue(':id', $this->_id, PDO::PARAM_INT);
     $sth->bindValue(':dateHour', $this->_dateHour);
     $sth->bindValue(':idPatients', $this->_idPatients, PDO::PARAM_INT);
-    // var_dump($sth->execute());
-    // die;
     return $sth->execute();
   }
 }
