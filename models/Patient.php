@@ -162,9 +162,35 @@ class Patient
     $sth->bindValue(':mail', $this->_mail);
     return $sth->execute();
   }
+
+  public static function deletePatient($id)
+  {
+    $db = connect();
+    $sql = 'DELETE FROM `patients` WHERE `id` = :id ;';
+    $sth = $db->prepare($sql);
+    $sth->bindValue(':id', $id, PDO::PARAM_INT);
+    return $sth->execute();
+  }
+  public static function search($search)
+  {
+    $db = connect();
+    $sql = 'SELECT * FROM `patients` WHERE `firstname` LIKE  :search OR  `lastname` LIKE :search ;';
+    $sth = $db->prepare($sql);
+    $sth->bindValue(':search','%'.$search.'%' ); //'%'=(commence par).$search. '%' permet la recherche soit par la premiere lettre ou par les suivantes ex: 'Lau' ou 'au'//
+    $sth->execute();
+    return $sth->fetchAll(PDO::FETCH_OBJ);
+  }
+
+  public static function paging()
+  {
+    $db = connect();
+    $sql = 'SELECT * FROM `patients` ORDER BY `id` DESC LIMIT 0,10 ;';
+    $sth = $db->prepare($sql);
+    return $sth->execute();
+  }
 }
 
-
+//* methode static n'HYDRATE rien, ne récupère rien d'un formulaire *//
 
 
 

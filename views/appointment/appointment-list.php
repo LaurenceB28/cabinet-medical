@@ -28,15 +28,12 @@
         <?php
         foreach ($appointmentsList as $appointment) { ?>
             <tr class="table-light">
-            <td><a href="/controllers/patient-appointmentCtrl.php?id=<?= $appointment->idAppointments ?>" class="btn btn-info">RDVinfos</a></td>
+                <td><a href="/controllers/patient-appointmentCtrl.php?id=<?= $appointment->idAppointments ?>" class="btn btn-info">RDVinfos</a></td>
                 <td><?= $appointment->firstname ?></td>
                 <td><?= $appointment->lastname ?></td>
                 <td>Le <?= date('d-m-Y à H:i', strtotime($appointment->dateHour)) ?></td>
-                <td><a href="/controllers/modify-appointmentCtrl.php?id=<?php
-                if($deleteAppointment->execute()){ 
-                    $message = 'Le rendez-vous est supprimé';} ?>" class="btn btn-primary">Modifier</a></td>
-                <td><button type="submit" name="deletePatient" value="<?= $appointment->idAppointments ?>" class="btn btn-danger">SuppRDV</button></td>
+                <td><a href="/controllers/modify-appointmentCtrl.php?id=<?= $appointment->idAppointments ?>" class="btn btn-primary">Modifier</a></td>
+                <td><a href="/controllers/appointment-ListCtrl.php?id=<?= $appointment->idAppointments ?>" class="btn btn-danger">Supprimer</a></td>
             </tr>
         <?php } ?>
-    </tbody>
 </table>

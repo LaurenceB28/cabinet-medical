@@ -124,12 +124,16 @@ WHERE `appointments`.`id` = :id;';
     return $sth->fetchAll();
   }
 
-  public function deleteAppointment()
+  /**
+   * Summary of deleteAppointment
+   * @return bool
+   */
+  public static function deleteAppointment($id)
   {
     $db = connect();
-    $sql = 'DELETE FROM `appointments` WHERE `id` = `:id`;';
+    $sql = 'DELETE FROM `appointments` WHERE `id` = :id ;';
     $sth = $db->prepare($sql);
-    $sth->bindValue(':id', $this->_id, PDO::PARAM_INT);
+    $sth->bindValue(':id', $id, PDO::PARAM_INT);
     return $sth->execute();
   }
 }
