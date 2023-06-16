@@ -128,13 +128,26 @@ WHERE `appointments`.`id` = :id;';
    * Summary of deleteAppointment
    * @return bool
    */
-  public static function deleteAppointment($id)
+  public static function deleteAppointment($id) /* supprime un rdv via son id de rdv*/
   {
     $db = connect();
-    $sql = 'DELETE FROM `appointments` WHERE `id` = :id ;';
+    $sql = 'DELETE FROM `appointments` 
+    WHERE `id` = :id ;';
     $sth = $db->prepare($sql);
     $sth->bindValue(':id', $id, PDO::PARAM_INT);
     return $sth->execute();
   }
+
+  public static function deleteAll($id) /* supprime tout les rendez vous d'un patient, donc doit être un id de patient */
+  {
+    $db = connect();
+    $sql = 'DELETE FROM `appointments` 
+    WHERE `idPatients` = :id ;';
+    $sth = $db->prepare($sql);
+    $sth->bindValue(':id', $id, PDO::PARAM_INT);
+    return $sth->execute();
+  }
+
+  
 }
 

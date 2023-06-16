@@ -12,18 +12,18 @@
     </button>
 </div>
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST"){ ?>
-<div>
-    <button type="button" id="back" class=" fixed-bottom btn btn-lg btn-info">
-        <a href="/controllers/patient-listCtrl.php" id="back-btn">Retour</a>
-    </button>
-</div>
+if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
+    <div>
+        <button type="button" id="back" class="fixed-bottom btn btn-lg btn-warning">
+            <a href="/controllers/patient-listCtrl.php" id="back-btn">Retour</a>
+        </button>
+    </div>
 <?php } ?>
 <div>
     <form method="post" class="d-flex" role="search"> <!-- method="post" pour $_SERVER request method, recupère les infos du formulaire ou champ de recherche-->
-    <input class="form-control-sm-info" type="search" name="search" placeholder="Rechercher" aria-label="Search">
-    <button class="btn btn-outline-info" type="submit">GO!</button>
-</form>
+        <input class="form-control-sm-info" type="search" name="search" placeholder="Rechercher" aria-label="Search">
+        <button class="btn btn-outline-info" type="submit">GO!</button>
+    </form>
 </div>
 <div id="results">
     <table class="table table-hover">
@@ -57,16 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){ ?>
             <?php } ?>
         </tbody>
     </table>
-    <nav>
-        <ul class="paging">
-            <li class="previous"></li>
-            <li><?php
-                // $total_pages =  ;
-                    for($page = 1; $page <= $total_pages ; $page++){ ?>
-                <a href='<?php echo "?page=$page"; ?>' class="links">
-                <?php  echo $page; ?></a>
-            </li>
-            <?php } ?>
-            <li class="next"></li>
-        </ul>
-    </nav>
+    
+    
+

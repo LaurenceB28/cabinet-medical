@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($hour)) {
         $error["hour"] = "l\'heure du rendez-vous n'est pas selectionnée";
     } else {
-        $isOk = filter_var($hour, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_DATE . '/')));
+        $isOk = filter_var($hour, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEXP_HOUR . '/')));
         if (!$isOk) {
             $error["hour"] = "l\'heure de rendez-vous n'est pas valide";
         }

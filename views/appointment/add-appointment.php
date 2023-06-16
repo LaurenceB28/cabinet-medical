@@ -23,7 +23,7 @@
     </div>
     <div class="mb-3">
         <label for="exampleSelect1" class="form-label mt-4">Heure du rendez-vous</label>
-        <input id="hour" type="time" name="hour" value="<?= $hour ?>" required>
+        <input type="time" id="hour"  name="hour" value="<?= $hour ?>" required>
         <small id="hourHelp" name="hour" class="form-text error"><?= $error['hour'] ?? '' ?></small>
     </div>
     <button type="submit" class="btn btn-info">Valider</button>

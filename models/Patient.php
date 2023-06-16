@@ -171,6 +171,10 @@ class Patient
     $sth->bindValue(':id', $id, PDO::PARAM_INT);
     return $sth->execute();
   }
+
+
+
+
   public static function search($search)
   {
     $db = connect();
@@ -181,12 +185,30 @@ class Patient
     return $sth->fetchAll(PDO::FETCH_OBJ);
   }
 
-  public static function paging()
+  public static function pagination($page)
   {
     $db = connect();
-    $sql = 'SELECT * FROM `patients` ORDER BY `id` DESC LIMIT 0,10 ;';
+    $sql = 'SELECT * FROM `patients` 
+    ORDER BY `id` 
+    LIMIT 10 OFFSET :paging ;'; /* $offset ou 0*/
+// page1 -0X10 = offset 0
+// page2 1X10 = offset 10
+// page3 2X10 = offset 20
+// page4 3X10 30
+
+    $page = ($page-1) * 10;
     $sth = $db->prepare($sql);
+    $sth->bindValue(':paging', $page);
+    $sth->execute();
     return $sth->execute();
+  }
+
+  public static function count()
+  {
+  $db = connect();
+  $sql ='SELECT * FROM `patients`'
+ 
+    
   }
 }
 

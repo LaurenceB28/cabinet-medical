@@ -30,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $error["hour"] = "l\'heure de rendez-vous n'est pas valide";
         }
     }
+    $dateHour = ($date . ' ' . $hour);
     if (empty($error)) {
-        $dateHour = ($date . ' ' . $hour);
         $modify = new Appointment();
         $modify->setId($id);
         $modify->setIdPatients($idPatients);

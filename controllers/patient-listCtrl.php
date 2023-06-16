@@ -20,11 +20,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si une recherche est effectuée g
 /* suppression du patient et des rdvs du patient */
     if (isset($_GET['id'])) {
         $id = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
-        $deleteAppointment = Appointment::deleteAppointment($id);
+        $deleteAppointment = Appointment::deleteAll($id);
         $deletePatient = Patient::deletePatient($id);
     }
-    /* pagination */
-    $page = Patient::paging();
+
+/* pagination */
+$pagination = Patient::pagination($page);
+// $offset
+// $limit = 10;
+// $page
+// $nbrTotal = ceil($total_results/$limit);
+// $nbPages
+// if (!isset($_GET['page'])) {
+//     $page = 1;
+// } else{
+//     $page = (int)$_GET['page'];
+// }
+ // $nbrPages = nbres de patients total divisés par le nb de patient par page
+ $nbrPages = $nbrTotal / 10;
+ $nbrTotal = ; 
+
+
 } catch (\Throwable $th) {
     var_dump($th);
 }

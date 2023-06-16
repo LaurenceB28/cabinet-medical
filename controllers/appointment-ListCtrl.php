@@ -5,7 +5,7 @@ $styleSheet = 'stylesheet.css';
 
 if(isset($_GET['id'])){
     $id = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
-    $deleteAppointment= Appointment::deleteAppointment($id);
+    $deleteAppointment = Appointment::deleteAppointment($id);
     var_dump($deleteAppointment);
 }
 $appointmentsList = Appointment::appointmentsList();
