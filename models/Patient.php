@@ -191,24 +191,53 @@ class Patient
     $sql = 'SELECT * FROM `patients` 
     ORDER BY `id` 
     LIMIT 10 OFFSET :paging ;'; /* $offset ou 0*/
-// page1 -0X10 = offset 0
+    $page = ($page-1) * 10;
+    $sth = $db->prepare($sql);
+    $sth->bindValue(':paging', $page, PDO::PARAM_INT);
+    $sth->execute();
+    return $sth->fetchAll();
+  }
+
+  // page1 0X10 = offset 0
 // page2 1X10 = offset 10
 // page3 2X10 = offset 20
 // page4 3X10 30
 
-    $page = ($page-1) * 10;
-    $sth = $db->prepare($sql);
-    $sth->bindValue(':paging', $page);
-    $sth->execute();
-    return $sth->execute();
-  }
-
   public static function count()
   {
-  $db = connect();
-  $sql ='SELECT * FROM `patients`'
- 
+    $db = connect();
+    $sql ='SELECT COUNT(*) AS `idCount` FROM `patients`;';
+    $sth = $db->query($sql);
+    return $sth->fetch(PDO::FETCH_OBJ);
+  }
+
+  // public static trans()
+  // {
+  //   $db = connect();
+
+  //   $sql = 'INSERT INTO `patients` (`lastname`,`firstname`,`birthdate`, `phone`, `mail`) 
+  //   VALUES (:lastname,:firstname,:birthdate,:phone,:mail);';
+
+  //   $sql2 = 'INSERT INTO `appointments` (`dateHour`,`idPatients`)
+  //   VALUES (:dateHour,:idPatients);';
     
+  //   $sth = $db->prepare($sql);
+  //   $sth->bindValue(':firstname', $this->_lastname);
+  //   $sth->bindValue(':lastname', $this->_firstname);
+  //   $sth->bindValue(':birthdate', $this->_birthdate);
+  //   $sth->bindValue(':phone', $this->_phone);
+  //   $sth->bindValue(':mail', $this->_mail);
+  //   $sth->execute();
+  // }
+
+  public function id()
+  {
+    $db = connect();
+    $db->lastInsertId();
+    $sql = 'SELECT LAST_INSERT_ID() FROM `patients`';
+    $sth = $db->prepare($sql);
+    $sth->bindValue(':id', $this->_id);
+    $sth ->execute();
   }
 }
 

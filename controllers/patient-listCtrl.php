@@ -3,7 +3,11 @@ require_once __DIR__ . '/../models/Patient.php';
 require_once __DIR__ . '/../models/Appointment.php';
 
 $styleSheet = 'stylesheet.css';
-
+if (!isset($_GET['page'])) {
+    $page = 1;
+} else{
+    $page = (int)$_GET['page'];
+}
 try {
 if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si une recherche est effectuée grâce à la methode POST//
     /*Search : nettoyage et validation*/
@@ -14,7 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si une recherche est effectuée g
 
 }else{
     /*sinon revient sur la liste patient*/
-    $patientList = Patient::patientList();
+    $patientList = Patient::pagination($page);
+    // var_dump($patientList);
+    // die;
 
 }
 /* suppression du patient et des rdvs du patient */
@@ -25,7 +31,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si une recherche est effectuée g
     }
 
 /* pagination */
+
+$limit = 10;
+$count = Patient::count();
+$nbrTotal = $count->idCount; 
+$nbrPages = ceil($nbrTotal / $limit);
 $pagination = Patient::pagination($page);
+
+
+
+} catch (\Throwable $th) {
+    var_dump($th);
+}
+
+
+
+
+
+include(__DIR__ . '/../views/templates/header.php');
+include(__DIR__ . '/../views/patient/patients-list.php');
+include(__DIR__ . '/../views/templates/footer.php');
+
 // $offset
 // $limit = 10;
 // $page
@@ -36,17 +62,4 @@ $pagination = Patient::pagination($page);
 // } else{
 //     $page = (int)$_GET['page'];
 // }
- // $nbrPages = nbres de patients total divisés par le nb de patient par page
- $nbrPages = $nbrTotal / 10;
- $nbrTotal = ; 
-
-
-} catch (\Throwable $th) {
-    var_dump($th);
-}
-
-
-
-include(__DIR__ . '/../views/templates/header.php');
-include(__DIR__ . '/../views/patient/patients-list.php');
-include(__DIR__ . '/../views/templates/footer.php');
+// $nbrPages = nbres de patients total divisés par le nb de patients par page

@@ -47,6 +47,14 @@ img{
 	
 }
 
+#page:hover{
+background-color : #3c0391;
+}
+
+.pagination{
+	justify-content: center;
+}
+
 /* #logoHome{
     width: 50%;
     display: flex;
